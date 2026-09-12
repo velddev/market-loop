@@ -1,4 +1,4 @@
 interface:
   display_name: "Market Loop"
-  short_description: "Rival agents, measured gains, and shared releases"
-  default_prompt: "Use $market-loop to run five competing engineering companies toward this project's goal, benchmark their submissions, update fictional stocks, and share approved improvements each cycle."
+  short_description: "Runway, pivots, benchmarks, and shared releases"
+  default_prompt: "Use $market-loop to run five competing engineering companies toward this project's goal, allocate finite research runway, enforce stagnation consequences, benchmark product improvements, and share approved releases."

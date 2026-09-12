@@ -1,75 +1,93 @@
 ---
 name: market-loop
-description: Run a competitive research loop where five subagents act as rival companies, develop in separate Git worktrees, submit benchmarked improvements, earn fictional stock prices, and inherit each approved shared release. Use when the user asks for this competition or market-style agent loop; ordinary parallel coding and real financial research are outside its scope.
+description: Run five rival engineering subagents in separate Git worktrees, benchmark their submissions, allocate finite research runway, penalize stagnation, and share approved releases. Use for competition or market-style research loops and their stock, funding, pivot, or release decisions; not ordinary parallel coding or real financial research.
 ---
 
 # Market Loop
 
-Run rival engineering companies toward the user's real objective. Their continuing objective is to become and remain market leader. The parent is the independent benchmark operator, integration reviewer, and market referee. Company identities and share prices make progress comparable; they never substitute for measured engineering results.
+Run rival companies toward the user's measurable product goal. Each aims to become and remain market leader. The parent is the benchmark operator, integration owner, investor and referee. Default to five companies with persistent identities and separate branches/worktrees. Competitors may change specialties or pursue complete alternative designs.
 
-Default to five companies, each aware of its four competitors, with separate branches and worktrees and an initial fictional price of $100. Honor an existing roster, scoring contract, time budget, and release process. Keep company identities across rounds. They may pivot beyond their starting specialties.
+Make competition affect decisions: funding, scarce test slots, integration effort, mandatory pivots and retirement of unsuccessful approaches. Roleplay alone is not an incentive mechanism. Keep financial values fictional and technical measurements independently auditable.
 
-## Establish the market
+## Establish a runnable market
 
-Inspect the repository and existing goal, agents, worktrees, studies, and outstanding tests before creating anything. Resume an existing market instead of duplicating it. Use subagents for companies, rather than creating user-owned app tasks unless requested. A skill invocation authorizes this research method within the user's task; it does not authorize unrelated deployment, external messages, paid resources, or changing the correctness contract.
+Inspect the existing market, goal, company worktrees and pending experiments. Resume them rather than creating duplicates. Use subagents for companies, not user-owned app tasks unless requested. Preserve the user's correctness, resource, authorization and time boundaries.
 
-Freeze a common base commit and benchmark contract before dispatch. Capture:
+Before dispatch, freeze:
 
-- The outcome, primary metric, workload, correctness checks, resource limits, and relevant product metrics.
-- Baseline source and executable identities, measurement conditions, and known limitations.
-- Company-to-agent, branch, and worktree mapping; current round, deadline or stopping condition, and hardware queue.
-- The pricing formula and evidence needed to move a price. Preserve an existing formula; never change it after seeing results to favor a company.
+- The primary product metric, workloads, correctness gate, resource limits, timing boundaries and qualification needed to claim a win.
+- A common source/build reference and an actually runnable control. If admission or the evaluator fails, repair the shared evaluation setup first. Declare changed conditions prospectively; do not compare incompatible runs.
+- A finite quarter budget: implementation time, shared hardware slots, screening cutoff and time reserved for integration and decisive tests. A quarter is a bounded work cycle, not elapsed calendar time.
+- The roster, company states, technical scoring policy, financial policy version, effective quarter and restructuring reserve. Use [economics.md](references/economics.md) when initializing, migrating, allocating or settling a market.
 
-Keep a compact durable ledger in the repository: rules, company state, submissions, raw benchmark receipts, release history, and press notes. Markdown plus JSON is sufficient; do not build a trading application or custom orchestration service to run the experiment.
+Use one shared evaluator, admission policy and hardware queue. Extend it narrowly when a candidate needs something new. Companies should not rebuild the same benchmark infrastructure independently. If the control is unusable or all companies are waiting on the referee, record a program-level failure and fix that bottleneck; do not manufacture five company failures.
 
-## Company mandate
+### Comparisons against a normal goal
 
-Tell every company its name, ticker, four rivals, price, shared base, assigned worktree, benchmark contract, and current standings. Give it a concrete first hypothesis while allowing later pivots. Instruct it to:
+When benchmarking this skill against a normal goal, the parent is strictly a referee. It may freeze the goal and evaluator, measure submissions, mechanically integrate qualified releases, settle the market, and report results. It must not write optimizations, suggest implementation strategies, repair competitors' solutions, or coach either arm.
 
-1. Choose the improvement most likely to raise its rank. Rank is what is rewarded; a rival's merged win raises everyone's baseline without raising anyone else's score. A company that is behind should pick a mechanism no rival is pursuing, since the leader's approach is about to become the shared base. A useful incremental gain still scores even if it cannot reach the overall target alone.
-2. Implement and check the smallest falsifiable candidate in its own worktree. Keep a short company log of thesis, evidence, rejected ideas, and next move.
-3. Freeze a submission with changed paths and hashes, base commit, dependencies, runnable checks, benchmark command, expected mechanism, resource accounting, and success criteria. State what is still unmeasured.
-4. Leave frozen inputs unchanged while queued. Put new experiments in separate versioned packets. Prepare source and lightweight checks while waiting; do not consume shared benchmark hardware without the referee's slot.
-5. After results, write a short technical press release backed by receipts. Open with rank, gap to the leader in the primary metric, and what changes next round because of it. Study the rivals' releases and choose a next move. Winning a round starts the work of defending leadership.
+Run the market and normal goal in completely separate project environments, with independent repositories, working directories, baseline copies, evaluator copies, and result stores. Give the normal goal a fresh agent context containing only the frozen goal, starting source, evaluation contract, and budget; never share market code, hypotheses, results, or conversation history with it. Keep company worktrees inside the market environment. Identical immutable starting inputs are the only intentional shared material. Document whether separation is filesystem/context isolation or an actual process/container boundary; do not claim a stronger boundary than exists.
 
-Competitive stakes are fictional ranking and earned performance credit. Failed experiments remain visible and motivate a pivot. Never reward fabricated gains, hidden costs, benchmark memorization, suppressed failures, or weaker correctness. Rivalry does not justify withholding an approved improvement from the next shared release.
+Freeze the same correctness gates, workloads, resource limits, and stopping rule for both arms. Match the normal goal's wall-time allowance to the measured market optimization window, excluding shared setup and final reporting. Serialize hardware-sensitive measurements, record actual elapsed time and agent effort separately, retain every turn's market, and show per-turn KPI movement independently from financial valuations. Label time-based checkpoints as checkpoints rather than pretending they are conversational turns. Do not treat a time-matched multi-agent comparison as a compute-matched comparison.
 
-## Benchmark and review
+Keep Markdown/JSON ledgers in the project under study. Store hypothesis IDs, raw receipts, company finances, decisions and release history there, not in this reusable skill. Keep documentation sufficient to reproduce decisions; repeated manifests and ceremonial reports are not progress.
 
-Parallelize independent implementation and analysis. Serialize measurements that contend for the same GPU, CPU, RAM, or storage through one parent-owned queue. Separate worktrees do not isolate hardware. Check resource admission and output paths before expensive work, and record cleanup before the next test.
+## Dispatch competing theses
 
-Use staged gates: source checks, bounded correctness/component test, then realistic end-to-end trials for candidates that warrant them. Retain negative and failed receipts. A rejected component need not consume a full-model benchmark merely to complete the roster; mark its disposition explicitly.
+Start each company brief with its valuation rank, technical result and comparability status, runway, stagnation/delivery streaks, and required action. Include the four competitors' results, shared release and available budget. Where no technical leader has a comparable qualified result, say so; do not invent a performance gap from share prices.
 
-Price the user's actual outcome. For inference this means accepted generated outputs per elapsed time, charging drafting, rejected branches, verification, transfers, and state updates. Report prefill and first-token latency separately when decode throughput is the pricing metric. Synthetic kernel rates, teacher-forced throughput, cache simulations, and theoretical ceilings are research evidence, not chat performance.
+Require each company to choose a thesis with:
 
-Run matched candidate/control measurements with multiple representative workloads, repeated in reversed order and fresh processes when state carries over. Record raw values, variability, useful work counts, correctness, memory and traffic, and timing boundaries. Keep conditions identical. Do not claim a noisy single observation is a validated win.
+1. The bottleneck and expected effect on the full product metric, with a simple cost or time budget. Account for overlap and Amdahl limits. Incremental improvements remain eligible; a large target should also attract designs capable of larger changes.
+2. A cheap falsifiable test, a failure criterion, and the next decision that either outcome would change. Freeze a hypothesis ID and milestone before results.
+3. An integration owner, dependencies, memory/traffic costs, and a route from component evidence to a complete contender. A promising component with no integration plan is unfinished work.
+4. A bounded submission: changed source and identities, runnable checks, expected mechanism, proposed benchmark and what remains unmeasured. Freeze inputs while queued; preserve failed attempts in distinct versions.
 
-Preserve the agreed correctness contract. Exact speculative algorithms can visit different rejected branches: validate computations against the reference for the same inputs and actual branch histories, rather than demanding identical proposal schedules. Relaxed semantics require an explicitly authorized, separately scored experiment. Larger hardware budgets are a different comparison.
+Let companies diverge from their original lanes. A lagging company must explain how its next approach can improve its position after rivals' approved changes become shared. Renaming the same mechanism, repeating a disproven idea without a new cause, or inheriting another company's code earns no new evidence credit.
 
-## Stock accounting
+## Screen, integrate and decide
 
-Shares are fictional engineering scores, not real securities or forecasts. Keep unvalidated prices unchanged and display the absence of a validated leader honestly.
+Parallelize source work; serialize tests that contend for CPU, GPU, RAM or disk. Worktrees do not isolate hardware. The parent owns the shared queue and checks admission, output paths and cleanup. Company allocation never expands the user's actual time, resource or spending budget.
 
-If no pricing policy exists, use a $100 starting score and compound each company's independently validated, adopted gain: `new_price = previous_price * geometric_mean(candidate_rate / matched_control_rate)`. For a lower-is-better metric, invert the ratio. Require at least two representative workloads, each tested in reversed order, plus the agreed correctness gates. Publish each round's ratio separately from the cumulative score and actual performance.
+Give each funded company a feasible screening opportunity, then allocate remaining effort by evidence and current financial status. Default to reserving at least half the available quarter time for integration and decisive comparisons; adapt this before the quarter to the task's costs. Protect correctness and cleanup time. Do not spend the entire quarter preparing packets or close early merely because everyone has a component report.
 
-Credit a contribution once. Receiving rivals' merged code gives everyone the same new technical starting point; it does not independently earn that gain again. Keep the prior valid score for a rejected or inconclusive submission. If evidence supporting a credited gain is invalidated, withdraw that credit and recompute from valid history. A cumulative score records earned contributions and must not be described as the company's current throughput ratio to another company.
+Use staged gates: source checks, bounded correctness/component test, integrated product evaluation. Reject a clearly losing component without wasting a full-model run. Promote promising candidates into the shared evaluator during the same quarter where feasible. If a finalist cannot complete the declared qualification within its allocation, disclose the missing gate and why; screening results cannot be priced as product wins.
 
-Use the project's existing formula instead of these defaults when one is already agreed. In particular, do not silently switch an established baseline-relative price to cumulative scoring. Record the denominator's reference commit and whether it stays fixed or advances with releases. Label a carried-forward quote with the round and reference that earned it; settle the next round's reference policy before measuring that round.
+Measure the user's actual outcome. For inference, count actual accepted outputs per elapsed time, including drafting, rejected work, verification, transfers and state updates. Separate prefill and first-token latency. Synthetic, teacher-forced and component rates are research evidence. Default qualification requires at least two representative workloads, each tested in reversed order with fresh processes where state persists. Predeclare a different appropriate qualification when the task warrants it.
 
-## Close a cycle and distribute the release
+Preserve exactness or the user's agreed quality contract. Different exact speculative algorithms may visit different rejected branches: compare the same inputs and actual histories against the reference. Do not demand identical proposal schedules across different algorithms or weaken target validation to obtain speed. Changed semantics require a separately authorized comparison.
 
-Wait until every company has a benchmark disposition for its frozen submission: validated, rejected, inconclusive, or blocked with evidence. A source-only queue entry is not a completed benchmark. Carry a blocked or unfinished candidate forward explicitly; do not invent a result to close the round. Bound a round by its agreed time or work budget so new ideas cannot indefinitely move the finish line.
+Judge full costs and variability. A small gain is useful if verified. A noisy observation, incomplete answer or component-only saving is not a qualified delivery. Multiple component gains require combined correctness and performance checks; they do not automatically add or multiply.
 
-Then perform the shared release in this order:
+### Synthesize all research into the next turn
 
-1. Commit the completed submission evidence and experimental source. Preserve unsuccessful attempts; exclude model weights, binaries, secrets, and unrelated user changes.
-2. Review and merge only approved runtime improvements. Resolve interactions and run meaningful combined correctness and performance checks; isolated gains do not automatically add or multiply. A cycle with no approved runtime change can still release valuable research evidence.
-3. Record the release commit, approved and rejected changes, receipts, and stock calculations. Push to the already authorized destination when publishing was requested; a press note is otherwise a local artifact, not permission to send it externally.
-4. Checkpoint each company's local work safely, rebase its branch onto the released common base, and resolve conflicts without deleting unfinished experiments. Remove rejected patches from the active runtime only after preserving them in an experimental commit or packet. Do not force-push shared branches without existing authorization.
-5. Verify all five have the same approved runtime baseline, with private research changes clearly separated. Rebasing alone does not prove equality if an old candidate remains active. Update source manifests and required build identities for the new round; retain old frozen manifests with their original receipts.
-6. Publish one press note with **stock updates** and **competitor technical releases**. Include prior/new price, measured gain, evidence status, what changed, what failed, what was merged, and the next research direction. Distinguish measured facts from company hypotheses and the overall target from current performance.
-7. Send every company its next message in this order: its rank and measured gap to the leader, the shared release commit, all five press releases, then its next bounded mandate. Standings buried under release notes do not steer. All receive the approved improvements and can build on their rivals' work in the next cycle.
+Each turn has two shared outputs: a cumulative research record and a validated runtime baseline. Preserve and distribute every company's hypotheses, source, tests, positive and negative results, tradeoffs, uncertainty, and unfinished work. Research remains available regardless of rank, funding, retirement, or runtime adoption. Before choosing its next hypothesis, each company must account for relevant shared findings and explain what its proposed experiment adds or which changed assumption justifies revisiting an earlier result.
 
-## Continue and stop
+Do not implement a top-1 or fixed top-K promotion rule. After screening, have the companies assess all submissions for overlap, compatibility, dependencies, and useful combinations. The companies choose and implement integration plans; in a comparison against a normal goal, the parent only administers this gate and evaluates the resulting candidates. Do not discard a compatible contribution simply because another company's standalone candidate is faster.
 
-Continue within the user's active goal and budget, treating corrections as steering. Do not create a persistent goal or scheduled automation unless requested. At a time limit, cancellation, resource block, or completion, leave a clean queue and durable checkpoint with pending work, branch states, and the next runnable experiment. Never mark the real objective achieved because a cycle, skill, or benchmark harness is complete.
+Combine compatible improvements and validate the complete release against the matched shared control. Evaluate competing replacements as alternatives, and retain the evidence from every alternative. A positive standalone result does not guarantee a positive combined result. Record each submission's disposition: adopted, incorporated in a combination, overlapping alternative, failed combined validation, research-only, or awaiting a named gate. If integration cannot finish within the reserved budget, preserve its plan and identify the missing gate rather than silently dropping it or claiming a combined gain.
+
+Advance the runtime baseline only with a qualified complete release. Advance the shared research record every turn, including no-delivery turns. Credit original contributions once using matched evidence; do not award every contributor the whole combined gain or assume component gains add or multiply. Preserve joint attribution with unresolved marginal credit when the evidence cannot isolate individual effects.
+
+## Settle consequences
+
+Apply the predeclared [economic rules](references/economics.md) after the parent reviews evidence. Classify each company as delivery, decision-quality learning, stagnant, or opportunity-blocked. Record the supporting hypothesis/gate and receipts. Keep technical scores, fictional valuations and research runway in separate fields.
+
+Qualifying negative evidence can earn limited runway, but it cannot reset the delivery drought. Two consecutive stagnant quarters require a substantial pivot. Three funded quarters without delivery, or exhausted runway, require restructuring of the approach. These are dispatch gates, not suggestions to append to a press release. Preserve company history, experiments and previously earned credit when replacing an approach.
+
+The next allocation must reflect settlement. A required pivot gets only a new-thesis screen until accepted; a retired approach gets no further slots. If all companies stagnate, the parent must change the shared bottleneck, allocation or evaluation process before repeating the cycle. Falling fictional prices alone do not fix an ineffective program.
+
+## Release and distribute
+
+Every company must have an honest disposition at the quarter boundary: validated, rejected, inconclusive, opportunity-blocked, or unfinished. A source-only submission is not a completed benchmark. A quarter with no qualifying delivery is recorded as **no delivery**, even if it publishes valuable research. There is no guaranteed winner and no permission to invent one.
+
+Close the cycle in this order:
+
+1. Commit completed experimental source and evidence, including unsuccessful attempts. Preserve unfinished work separately; exclude model weights, binaries, secrets and unrelated user changes.
+2. Complete the all-submission synthesis gate and merge the compatible improvements that pass combined runtime checks. Preserve evaluated alternatives and unresolved integration plans with explicit dispositions. The parent owns getting submissions to this decision, subject to the no-assistance boundary above. A no-delivery release shares research without promoting an unqualified candidate.
+3. Record outcomes, technical results, before/after valuations, runway burn/grants, streaks, required pivots, next allocations and policy/reference identities. Publish only to an already authorized destination.
+4. Rebase company branches onto the approved common release, preserving private research. Remove rejected patches from the active runtime only after preserving them in an experimental commit or packet. Verify selected source and required build identities, not merely Git ancestry. Do not force-push shared branches without existing authorization.
+5. Publish one press note with stock updates and all competitor technical releases. Separate measured facts, financial assumptions, unresolved gates and hypotheses. Include what changed in the shared product and what each company must do differently.
+6. Send each company its rank/status, runway and required action first, then the shared runtime, cumulative research from all companies, integration dispositions and next bounded mandate. Everyone inherits approved improvements and research, including negative and unfinished findings; only the original contribution earns credit.
+
+Continue only within the user's active request and budget. Simulation credits do not authorize paid resources, external messages, deployment, extra quarters, goals or automations. At a deadline or cancellation, leave a clear queue and durable checkpoint. Completing a quarter or updating this skill does not complete the underlying product goal.
