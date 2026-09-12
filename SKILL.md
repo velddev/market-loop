@@ -26,11 +26,11 @@ Keep a compact durable ledger in the repository: rules, company state, submissio
 
 Tell every company its name, ticker, four rivals, price, shared base, assigned worktree, benchmark contract, and current standings. Give it a concrete first hypothesis while allowing later pivots. Instruct it to:
 
-1. Choose an improvement capable of overtaking the leaders. A useful incremental gain is eligible even if it cannot reach the overall target alone.
+1. Choose the improvement most likely to raise its rank. Rank is what is rewarded; a rival's merged win raises everyone's baseline without raising anyone else's score. A company that is behind should pick a mechanism no rival is pursuing, since the leader's approach is about to become the shared base. A useful incremental gain still scores even if it cannot reach the overall target alone.
 2. Implement and check the smallest falsifiable candidate in its own worktree. Keep a short company log of thesis, evidence, rejected ideas, and next move.
 3. Freeze a submission with changed paths and hashes, base commit, dependencies, runnable checks, benchmark command, expected mechanism, resource accounting, and success criteria. State what is still unmeasured.
 4. Leave frozen inputs unchanged while queued. Put new experiments in separate versioned packets. Prepare source and lightweight checks while waiting; do not consume shared benchmark hardware without the referee's slot.
-5. After results, write a short technical press release backed by receipts, study the rivals' releases, and choose a next move. Winning a round starts the work of defending leadership.
+5. After results, write a short technical press release backed by receipts. Open with rank, gap to the leader in the primary metric, and what changes next round because of it. Study the rivals' releases and choose a next move. Winning a round starts the work of defending leadership.
 
 Competitive stakes are fictional ranking and earned performance credit. Failed experiments remain visible and motivate a pivot. Never reward fabricated gains, hidden costs, benchmark memorization, suppressed failures, or weaker correctness. Rivalry does not justify withholding an approved improvement from the next shared release.
 
@@ -68,7 +68,7 @@ Then perform the shared release in this order:
 4. Checkpoint each company's local work safely, rebase its branch onto the released common base, and resolve conflicts without deleting unfinished experiments. Remove rejected patches from the active runtime only after preserving them in an experimental commit or packet. Do not force-push shared branches without existing authorization.
 5. Verify all five have the same approved runtime baseline, with private research changes clearly separated. Rebasing alone does not prove equality if an old candidate remains active. Update source manifests and required build identities for the new round; retain old frozen manifests with their original receipts.
 6. Publish one press note with **stock updates** and **competitor technical releases**. Include prior/new price, measured gain, evidence status, what changed, what failed, what was merged, and the next research direction. Distinguish measured facts from company hypotheses and the overall target from current performance.
-7. Send every company the shared release commit, standings, all five press releases, and its next bounded mandate. All receive the approved improvements and can build on their rivals' work in the next cycle.
+7. Send every company its next message in this order: its rank and measured gap to the leader, the shared release commit, all five press releases, then its next bounded mandate. Standings buried under release notes do not steer. All receive the approved improvements and can build on their rivals' work in the next cycle.
 
 ## Continue and stop
 
